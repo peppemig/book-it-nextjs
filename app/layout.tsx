@@ -4,6 +4,8 @@ import './globals.css'
 import Navbar from "./components/navbar/Navbar"
 import RegisterModal from "./components/modals/RegisterModal"
 import ToasterProvider from "./providers/ToasterProvider"
+import LoginModal from "./components/modals/LoginModa"
+import getCurrentUser from "./actions/getCurrentUser"
 
 export const metadata = {
   title: 'BookIt!',
@@ -14,17 +16,21 @@ const font = Nunito({
   subsets: ["latin"]
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+    const currentUser = await getCurrentUser()
+
   return (
     <html lang="en">
       <body className={font.className}>
         <ToasterProvider/>
         <RegisterModal/>
-        <Navbar/>
+        <LoginModal/>
+        <Navbar currentUser={currentUser}/>
         {children}
       </body>
     </html>
