@@ -7,7 +7,7 @@ const Logo = () => {
     const router = useRouter()
 
     return (
-        <div className="flex-row items-center gap-2 justify-center hidden md:flex cursor-pointer">
+        <div onClick={() => router.push('/')} className="flex-row items-center gap-2 justify-center hidden md:flex cursor-pointer">
             <AiOutlineHome size={30} className="text-rose-500"/>
             <label className="text-rose-500 font-bold text-xl">BookIt!</label>
         </div>
